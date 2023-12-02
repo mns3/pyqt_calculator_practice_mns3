@@ -6,10 +6,13 @@ class Main(QDialog):
         super().__init__()
         self.init_ui()
 
+        self.memory = ''
+
+
     # 숫자 입력/표시 부분 통합 CHECK
     # 사칙연산 배치 변경 CHECK
     # 새 버튼 추가 CHECK
-    # 계산 기능 개선
+    # 계산 기능 개선 CHECK
     # 신규 연산 기능 추가
     # GUI 수정 및 개선 CHECK
     # 계산기 기능 추가
@@ -128,10 +131,13 @@ class Main(QDialog):
     def button_operation_clicked(self, operation):
         equation = self.equation.text()
         equation += operation
-        self.equation.setText(equation)
+        self.memory += equation
+        # self.equation.setText(equation)
+        self.equation.setText("")
 
     def button_equal_clicked(self):
-        equation = self.equation.text()
+        equation = self.memory + self.equation.text()
+        self.memory = ''
         # solution = eval(equation)
         # self.solution.setText(str(solution))
         equation = eval(equation)
