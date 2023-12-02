@@ -7,7 +7,7 @@ class Main(QDialog):
         self.init_ui()
 
     # 숫자 입력/표시 부분 통합 CHECK
-    # 사칙연산 배치 변경
+    # 사칙연산 배치 변경 CHECK
     # 새 버튼 추가
     # 계산 기능 개선
     # 신규 연산 기능 추가
@@ -18,7 +18,7 @@ class Main(QDialog):
         main_layout = QVBoxLayout()
 
         ### 각 위젯을 배치할 레이아웃을 미리 만들어 둠
-        layout_operation = QHBoxLayout()
+        # layout_operation = QHBoxLayout()
         layout_clear_equal = QHBoxLayout()
         layout_number = QGridLayout()
         layout_equation_solution = QFormLayout()
@@ -47,10 +47,10 @@ class Main(QDialog):
         button_division.clicked.connect(lambda state, operation = "/": self.button_operation_clicked(operation))
 
         ### 사칙연산 버튼을 layout_operation 레이아웃에 추가
-        layout_operation.addWidget(button_plus)
-        layout_operation.addWidget(button_minus)
-        layout_operation.addWidget(button_product)
-        layout_operation.addWidget(button_division)
+        layout_number.addWidget(button_plus, 3, 3)
+        layout_number.addWidget(button_minus, 2, 3)
+        layout_number.addWidget(button_product, 1, 3)
+        layout_number.addWidget(button_division, 0, 3)
 
         ### =, clear, backspace 버튼 생성
         button_equal = QPushButton("=")
@@ -91,7 +91,7 @@ class Main(QDialog):
 
         ### 각 레이아웃을 main_layout 레이아웃에 추가
         main_layout.addLayout(layout_equation_solution)
-        main_layout.addLayout(layout_operation)
+        # main_layout.addLayout(layout_operation)
         main_layout.addLayout(layout_clear_equal)
         main_layout.addLayout(layout_number)
 
@@ -101,6 +101,7 @@ class Main(QDialog):
     #################
     ### functions ###
     #################
+    
     def number_button_clicked(self, num):
         equation = self.equation.text()
         equation += str(num)
